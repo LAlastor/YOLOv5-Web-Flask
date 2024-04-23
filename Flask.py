@@ -120,8 +120,8 @@ def genWeb(camera):
     # 初始化 yolov5
     detector = Detector()
 
-    # 设置时间间隔7s
-    schedule.every(7).seconds.do(job)
+    # 设置时间间隔30s
+    schedule.every(30).seconds.do(job)
 
     while True:
         _, im = camera.get_frame()
