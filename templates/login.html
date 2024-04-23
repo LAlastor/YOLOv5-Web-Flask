@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+        body {
+            background-image: url("../img/Quan.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            backdrop-filter: blur(4px);
+            text-align: center;
+            color: white; /* 修改字体颜色为白色 */
+            font-size: 20px; /* 修改字体大小 */
+            display: flex; /* 使用 Flexbox 布局 */
+            justify-content: center; /* 在水平方向上居中对齐 */
+            align-items: center; /* 在垂直方向上居中对齐 */
+            height: 100vh; /* 设置页面高度为视口高度 */
+        }
+        form {
+            width: 300px; /* 设置表单宽度 */
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%; /* 设置输入框和按钮宽度为父容器的宽度 */
+            margin-bottom: 10px; /* 设置输入框之间的间距 */
+        }
+        input[type="submit"] {
+            font-size: 20px; /* 修改按钮大小 */
+            padding: 10px 20px; /* 设置按钮内边距 */
+        }
+        .register-link {
+            margin-top: 20px; /* 设置注册链接与登录表单的间距 */
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2>用户登录界面</h2>
+    <div>
+        <form action="/loginProcess" method="post">
+            <label for="name">账号：</label>
+            <input type="text" name="name" id="name">
+            <br>
+            <label for="mm">密码：</label>
+            <input type="password" name="mm" id="mm">
+            <br>
+            <input type="submit" name="submit" value="登录">
+        </form>
+        <div class="register-link">
+            <a href="{{ url_for('register') }}">没有账号？点击注册</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

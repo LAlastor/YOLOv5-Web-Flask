@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}common {% endblock %}</title>
+    <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+        body {
+            background-image: url("../img/Vecc.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        img {
+            height: auto;
+            width: auto\9;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'templates/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'templates/css/yolo.css') }}">
+    <link href="{{ url_for('static', filename = 'templates/css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+<body>
+   {% block header %}
+       <div class="header">
+           <ul>
+               <li><p><a href="{{ url_for('home') }}">主页</a></p></li>
+                <li><p><a href="{{ url_for('yolo') }}">系统主界面</a></p></li>
+               <li><p><a href="{{ url_for('camera') }}">摄像头测试</a></p></li>
+               <li><p><a href="{{ url_for('LocalVideo') }}">本地视频播放测试</a></p></li>
+               <li><p><a href="{{ url_for('Related') }}">关于本项目</a></p></li>
+           </ul>
+       </div>
+   {% endblock %}
+   {% block container %}
+       <div class="container">
+           <br>
+           中间内容
+       </div>
+   {% endblock %}
+   {% block footer %}
+       <div class="footer" style="color: white;">Made by Long William, 2024.</div>
+   {% endblock %}
+</body>
+</html>

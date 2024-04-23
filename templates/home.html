@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} 主页 {% endblock %}</title>
+    <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+        body {
+            background-image: url("../img/Vecc.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        img {
+            height: auto;
+            width: auto\9;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'templates/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'templates/css/yolo.css') }}">
+    <link href="{{ url_for('static', filename = 'templates/css/bootstrap.min.css') }}" rel="stylesheet">
+</head>
+
+{% block header %}
+	<ul class="nav">
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('home') }}">主页</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="login">更多内容</a>
+		</li>
+		<li class="nav-item dropdown ml-md-auto">
+			 <a class="nav-link dropdown-toggle" href="https://pjreddie.com/darknet/yolo/" id="navbarDropdownMenuLink" data-toggle="dropdown">YOLO相关项目</a>
+		</li>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block container %}
+<body>
+<br>
+<br>
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<h1>
+					欢迎!
+				</h1>
+				<p>
+					基于YOLOv5的多物体跟踪检测与计数
+				</p>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<p>
+					<a class="btn btn-primary btn-large" href="login">系统主界面</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+</html>

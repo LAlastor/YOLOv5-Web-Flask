@@ -1,0 +1,208 @@
+{% extends 'common.html' %}
+{% block title %} 本地视频播放测试 {% endblock %}
+{% block container %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>本地的视频播放测试</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+		body{
+            background-image: url("../img/Vecc.jpg");
+            background-repeat: repeat; /* 设置背景图片平铺填充 */
+        }
+        h3, hr, input {
+            color: white; /* 将字体颜色设置为白色 */
+        }
+        img{height: auto; width: auto\9; width:100%}
+    </style>
+    <script>
+
+    </script>
+    <style>
+        .top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .leave {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .arrive {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .exist {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .leave-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .leave-word-number {
+            font-size: 50px;
+        }
+
+        .arrive-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .arrive-word-number {
+            font-size: 50px;
+        }
+
+        .exist-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .exist-word-number {
+            font-size: 50px;
+        }
+
+
+        .time {
+            display: flex;
+
+        }
+        video {
+            height: auto;
+            margin: 50px auto;
+            display: block;
+        }
+
+
+        .main {
+            flex: 1;
+            flex-direction: row;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><center>本地的视频播放测试</center></h1>
+    <hr color="#666666">
+    <br/>
+
+
+    <div id="app">
+
+        <div class="top">
+            <div class="leave" style="background:rgb(214, 23, 23);" v-if="leave in leave">
+                <div class="leave-word">
+                    <p class="leave-word-title"></p>
+                    <p class="leave-word-number">{{leave}}</p>
+                </div>
+            </div>
+
+            <div class="exist" style="background:rgb(188, 206, 22);" v-if="exist in exist">
+                <div class="exist-word">
+                    <p class="exist-word-title"></p>
+                    <p class="exist-word-number">{{exist}}</p>
+                </div>
+            </div>
+
+            <div class="arrive" style="background:rgb(22, 22, 206);" v-if="arrive in arrive">
+                <div class="arrive-word">
+                    <p class="arrive-word-title"></p>
+                    <p class="arrive-word-number">{{arrive}}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <br/><br/><br/>
+    <h3>播放本地的视频播放测试</h3>
+    <hr color="#666666">
+    <input type="file" id="file" onchange="onInputFileChange()">
+    <br/>
+    <video id="video_id"  width="810" height="540" controls autoplay loop>你的浏览器不能支持HTML5视频</video>
+
+</body>
+
+
+
+<canvas id="canvas" width="480" height="320"></canvas>
+
+
+
+
+<script>
+
+      var video = document.getElementById('video');
+
+      var canvas = document.getElementById('canvas');
+
+      var capture = document.getElementById('capture');
+
+      var context = canvas.getContext('2d');
+
+
+
+      //成功回调函数
+
+      function success(stream) {
+
+          //兼容webkit核心浏览器
+
+          var CompatibleURL = window.URL || window.webkitURL;
+
+          //将视频流转化为video的源
+
+          video.srcObject = stream;
+
+          video.play();//播放视频
+
+      }
+
+      function error(error) {
+
+          console.log('访问用户媒体失败：', error.name, error.message);
+
+      }
+
+
+
+      var constraints = { audio: true, video: true }
+
+      navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
+
+      capture.addEventListener('click', function () {
+
+          // 将video画面描绘在canvas画布上
+
+          context.drawImage(video, 0, 0, 480, 320);
+
+      })
+
+
+      function onInputFileChange() {
+        var file = document.getElementById('file').files[0];
+        var url = URL.createObjectURL(file);
+        console.log(url);
+        document.getElementById("video_id").src = url;
+      }
+
+  </script>
+
+</html>
+{% endblock %}

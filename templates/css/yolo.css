@@ -1,0 +1,74 @@
+/* 这是用于摄像头的三个统计格子的css*/
+        .top {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .leave {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .arrive {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .exist {
+            flex: 1;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .leave-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .leave-word-number {
+            font-size: 50px;
+        }
+
+        .arrive-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .arrive-word-number {
+            font-size: 50px;
+        }
+
+        .exist-word-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .exist-word-number {
+            font-size: 50px;
+        }
+
+
+        .time {
+            display: flex;
+
+        }
+
+        video {
+            height: auto;
+            margin: 50px auto;
+            display: block;
+        }
+
+        .center {
+          text-align: center;
+        }
+
+
+        .main {
+            flex: 1;
+            flex-direction: row;
+            align-items: center;
+        }

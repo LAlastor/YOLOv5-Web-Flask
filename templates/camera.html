@@ -1,0 +1,114 @@
+{% extends 'common.html' %}
+{% block title %} 摄像头测试界面 {% endblock %}
+{% block container %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>摄像头测试界面</title>
+    <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+        body {
+            background-image: url("../img/Vecc.jpg");
+            background-repeat: repeat; /* 平铺填充背景 */
+            background-size: cover;
+            text-align: center;
+            color: white; /* 将字体颜色设置为白色 */
+        }
+        img {
+            height: auto;
+            width: auto\9;
+            width: 100%;
+        }
+        #video {
+            margin: 0 auto; /* 将视频窗口布置在界面中间位置 */
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>摄像头测试界面</h1>
+    <hr color="#666666">
+    <br/>
+
+    <div id="app">
+        <!-- 这里保留了Vue.js的语法，但需要提供对应的数据 -->
+        <div class="top">
+            <div class="leave" style="background:rgb(214, 23, 23);" v-if="leave in leave">
+                <div class="leave-word">
+                    <p class="leave-word-title"></p>
+                    <p class="leave-word-number">{{leave}}</p>
+                </div>
+            </div>
+
+            <div class="exist" style="background:rgb(188, 206, 22);" v-if="exist in exist">
+                <div class="exist-word">
+                    <p class="exist-word-title"></p>
+                    <p class="exist-word-number">{{exist}}</p>
+                </div>
+            </div>
+
+            <div class="arrive" style="background:rgb(22, 22, 206);" v-if="arrive in arrive">
+                <div class="arrive-word">
+                    <p class="arrive-word-title"></p>
+                    <p class="arrive-word-number">{{arrive}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/><br/><br/>
+
+    <!-- 视频播放区域 -->
+    <video id="video" class="center" style="width: 810px;height: 540px;text-align: center;"></video>
+
+    <!-- 画布区域 -->
+    <canvas id="canvas" width="480" height="320"></canvas>
+
+    <!-- 按钮区域 -->
+    <button id="capture" class="btn btn-primary">截图</button>
+
+</body>
+
+<script>
+
+    var video = document.getElementById('video');
+    var canvas = document.getElementById('canvas');
+    var capture = document.getElementById('capture');
+    var context = canvas.getContext('2d');
+
+    // 当视频元素加载完成时执行
+    video.addEventListener('loadedmetadata', function() {
+        // 设置canvas的尺寸与视频相同
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+    });
+
+    // 成功回调函数
+    function success(stream) {
+        // 将视频流转化为video的源
+        video.srcObject = stream;
+        video.play(); // 播放视频
+    }
+
+    function error(error) {
+        console.log('访问用户媒体失败：', error.name, error.message);
+    }
+
+    var constraints = { audio: true, video: true }
+    navigator.mediaDevices.getUserMedia(constraints).then(success).catch(error);
+
+    capture.addEventListener('click', function () {
+        // 将video画面描绘在canvas画布上
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    });
+
+</script>
+
+</html>
+
+{% endblock %}

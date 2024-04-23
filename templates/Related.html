@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+{% block title %} 关于本项目 {% endblock %}
+{% block container %}
+<html lang="en">
+<head>
+    <br>
+    <br>
+    <br>
+    <meta charset="UTF-8">
+    <title>项目简介</title>
+        <link rel="shortcut icon" href="../img/webn.ico">
+    <style type="text/css">
+		body{
+            background-image: url("../img/SnowM.jpg");
+            background-repeat:no-repeat;
+            background-size: 100%;
+        }
+        img{height: auto; width: auto\9; width:100%}
+    </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa;">
+    <div class="container">
+        <h2 style="color: #343a40; text-align: center;">欢迎访问</h2>
+        <hr style="border-color: #ffc107;">
+        <div style="color: gold; font-size: 18px; line-height: 1.6;">
+            <p>本项目为毕业设计项目：基于YOLOv5的多物体跟踪检测与计数。作者：龙兆祥</p>
+            <p>使用PyTorch等深度学习框架对YOLOv5模型进行训练和优化，实现对多种不同类别物体的实时检测与计数。</p>
+            <p>同时，利用Python编程语言及其相关库进行数据预处理、清洗和标注，以准备训练和测试数据集。</p>
+            <p>此外，利用MySQL数据库管理系统构建和管理存放进出人数随时间变化数据的数据库，以确保数据的安全性和可靠性。</p>
+            <p>最后，使用Flask等轻量级框架搭建后端服务，实现对模型的调用和数据的处理，并通过HTML、JavaScript等前端技术构建用户友好的交互界面，实现对检测与计数结果的展示和分析。</p>
+        </div>
+        <br>
+        <p style="text-align: center;"><a href="{{ url_for('home') }}" class="btn btn-primary">返回主页</a></p>
+    </div>
+</body>
+
+
+</html>
+{% endblock %}

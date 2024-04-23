@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+    href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<title>基于YOLOv5的多物体跟踪检测与计数</title>
+<link rel="shortcut icon" href="../img/webn.ico">
+<style type="text/css">
+    body {
+        background-image: url("../img/while.jpg");
+        background-repeat: repeat;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <span class="navbar-brand">基于YOLOv5的多物体跟踪检测与计数</span>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="dropdown01"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">项目源码</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown01">
+							<a class="dropdown-item" href="https://github.com/LAlastor/YOLOv5-Web-Flask">GitHub源码</a>
+							<a class="dropdown-item" href="https://github.com/ultralytics/yolov5/releases/download/v1.0/coco128.zip">数据集</a>
+						</div></li>
+				</ul>
+                </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>基于YOLOv5的多物体跟踪检测与计数</h1>
+            <p>近年来，随着计算机网络技术的快速发展，目标检测技术作为计算机视觉领域的重要任务，得到了广泛的研究与开发,其中，多物体检测跟踪与计数在许多领域中具有重要的应用价值。
+            </p><br/>
+            <P>而YOLO，作为一种基于回归的目标检测算法模型，有着识别和定位合二为一的网络设计，使得其处理速度快于其他目标检测模型，从而适合用于实时目标检测程序的开发。基于YOLO实现自动化的多物体检测与计数系统，可以提高工作效率、减少人力资源投入，并且具有较高的精度和准确性。</P>
+            <br>
+            <p>本项目是基于目标检测模型YOLOv5制作的一个检测并且跟踪目标的程序，我们可以通过外置摄像头进行实时的检测跟踪，或者将已有的视频导入到程序之中，实现快速地对诸如人、自行车、汽车等等目标的检测以及在特定空间内进出入数量变化的跟踪，并将跟踪结果每隔一段时间导入数据库之中。</p>
+            <br>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>摄像头实时检测与跟踪</h2>
+                <br>
+                <p>通过调用摄像头对画面实时检测与跟踪</p>
+                <p>
+                    <a class="btn btn-secondary"
+                        href="{{ url_for('video_feed') }}"
+                        role="button">前往 &raquo;</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h2>对本地的视频画面检测与跟踪</h2>
+                <br>
+                 <p>通过上传文件对视频进行检测与跟踪</p>
+                <form id="videoForm" enctype="multipart/form-data" action="{{ url_for('video_process') }}" method="POST">
+                    <input type="file" name="videoFile" accept="video/*">
+                    <br><br>
+                    <button type="submit" class="btn btn-secondary">开始检测与跟踪</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <a class="btn btn-primary" href="{{ url_for('Related') }}">更多内容</a>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+</body>
+</html>
